@@ -36,6 +36,10 @@ image_project/
 ├── requirements.txt       # Liste des dépendances
 ├── src/                   # Code source
 │   └── main.py            # Point d'entrée du projet
+├── models/                # Liste des modèles post-entrainement
+├── data/                  # Contient toutes les données d'entrainement du modèle
+│
+├── venv/                  # Environnement virtuel (Python 3.13)
 └── README.md              # Ce fichier
 ```
 
