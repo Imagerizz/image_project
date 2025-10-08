@@ -62,6 +62,11 @@ pip freeze > requirements.txt
    ```bash
    python src/main.py
    ```
+3. Changer la source de votre environnement python pour sélectionner le bon :
+
+```bash
+ source ./venv/bin/activate
+```
 
 ---
 
