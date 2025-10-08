@@ -65,6 +65,16 @@ pip freeze > requirements.txt
 
 ---
 
+## Règles de bonnes pratiques :
+
+- Utilisation des conventions Angular pour les commits.
+  `format : type(scope): description`
+  https://www.conventionalcommits.org/en/v1.0.0-beta.4/
+
+  - Linter : Ruff
+
+---
+
 ## Licence
 
 [MIT](LICENSE)

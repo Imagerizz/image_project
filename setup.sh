@@ -9,10 +9,10 @@ echo "=== Activation de l'environnement virtuel ==="
 # Détection automatique du système
 case "$(uname -s)" in
     Linux|Darwin)
-        source venv/bin/activate
+        source ./venv/bin/activate
         ;;
     MINGW*|MSYS*|CYGWIN*)
-        source venv/Scripts/activate
+        source ./venv/Scripts/activate
         ;;
     *)
         echo "Système non reconnu. Activez l'environnement manuellement."
