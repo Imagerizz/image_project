@@ -3,7 +3,7 @@
 set -e
 
 echo "=== Création de l'environnement virtuel ==="
-python3.13 -m venv venv
+python3 -m venv venv
 
 echo "=== Activation de l'environnement virtuel ==="
 # Détection automatique du système
