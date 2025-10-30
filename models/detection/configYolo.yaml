@@ -1,10 +1,10 @@
 # license_plate.yaml
-path: C:/Users/mathi/.cache/kagglehub/datasets/fareselmenshawii/large-license-plate-dataset/versions/1  # ou chemin relatif
+path: C:/Users/rodli/.cache/kagglehub/datasets/fareselmenshawii/large-license-plate-dataset/versions/1 # ou chemin relatif
 train: images/train
 val: images/val
 test:  # optionnel
 
-# Nombre de classes (à adapter selon ton dataset)
+# Nombre de classes (à adapter selon le dataset)
 nc: 1
 # Noms des classes (exemple pour des plaques d'immatriculation)
 names: ['license_plate']
