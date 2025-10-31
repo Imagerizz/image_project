@@ -29,17 +29,17 @@ def train_model():
         workers=8,  # To limit multiprocessing windows
     )
 
+    print(f"Train result : {train_results}")
+
     # Evaluate the model's performance on the validation set
     metrics = model.val()
 
+    print(f"Train metrics : {metrics}")
+
     # Perform object detection on an image
-    results = model("img.png")  # Predict on an image
-    results[0].show()  # Display results
+    #results = model("img.png")  # Predict on an image
+    #results[0].show()  # Display results
 
     # Export the model to ONNX format for deployment
     path = model.export(format="onnx")  # Returns the path to the exported model
     print(path)
-
-
-if __name__ == "__main__":
-    train_model()

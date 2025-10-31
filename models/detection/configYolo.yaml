@@ -1,5 +1,5 @@
 # license_plate.yaml
-path: ../../data/raw/fareselmenshawii/large-license-plate-dataset/versions/1
+path: data/raw/fareselmenshawii/large-license-plate-dataset/versions/1
 train: images/train
 val: images/val
 test:  images/test
