@@ -2,60 +2,42 @@
 This Python module aims to preprocess images for YOLO to improve its results.
 """
 
+import shutil
 from pathlib import Path
-from PIL import Image
-import matplotlib.pyplot as plt
 
-def fetch_directory(dir_path: Path) -> list[Path]:
+import kagglehub
+
+
+def download_dataset():
+    # Download latest version
+    path = kagglehub.dataset_download("fareselmenshawii/large-license-plate-dataset")
+
+    print("Path to dataset files:", path)
+
+
+def copy_kaggle_dataset_to_raw(dataset_name: str, destination_dir: str = "data/raw") -> None:
     """
-    Fetch all image files from the specified directory.
+    Copie un dataset Kaggle depuis ~/.cache/kaggle/datasets/ vers data/raw.
 
     Args:
-        dir_path: Path to the directory containing images.
-
-    Returns:
-        List of Path objects for each image file.
+        dataset_name (str): Nom du dossier du dataset (ex: "fareselmenshawii").
+        destination_dir (str): Dossier de destination (par défaut: "data/raw").
     """
-    return [f for f in dir_path.iterdir() if f.is_file()]
+    # Chemin relatif au cache Kaggle (compatible Windows/Linux)
 
-def convert_image(image_path: Path) -> Image.Image:
-    """
-    Convert an image to grayscale.
+    cache_dir = Path.home() / ".cache" / "kagglehub" / "datasets"
+    source_path = cache_dir / dataset_name
 
-    Args:
-        image_path: Path to the image file.
+    # Vérification
+    if not source_path.exists():
+        raise FileNotFoundError(
+            f"Dataset '{dataset_name}' introuvable dans {cache_dir}. "
+            f"Contenu actuel : {list(cache_dir.glob('*'))}"
+        )
 
-    Returns:
-        Grayscale PIL Image.
-    """
-    with Image.open(image_path) as image:
-        return image.convert('L')
+    # Création du dossier de destination
+    dest_path = Path(destination_dir) / dataset_name
+    dest_path.mkdir(parents=True, exist_ok=True)
 
-def bulk_convert(from_dir: Path) -> list[Image.Image]:
-    """
-    Convert all images in a directory to grayscale.
-
-    Args:
-        from_dir: Path to the directory containing images.
-
-    Returns:
-        List of grayscale PIL Images.
-    """
-    files = fetch_directory(from_dir)
-    return [convert_image(file) for file in files]
-
-if __name__ == '__main__':
-    # Use Path for all path manipulations
-    project_root = Path(__file__).resolve().parent.parent.parent
-    test_dir = project_root / 'data' / 'raw' / 'images' / 'test'
-
-    # Check if directory exists
-    if not test_dir.exists():
-        raise FileNotFoundError(f"The directory {test_dir} does not exist.")
-
-    imgs = bulk_convert(test_dir)
-
-    # Display first 3 images
-    for image in imgs[:3]:
-        plt.imshow(image, cmap='gray')
-        plt.show()
+    shutil.copytree(source_path, dest_path, dirs_exist_ok=True)
+    print(f"Dataset copié de {source_path} vers {dest_path}")
