@@ -1,10 +1,18 @@
+# Jetbrains
 .idea/
 
+# The venv
 .venv
 venv/
 
 .DS_Store
 .ruff*
 
+# Datasets directory
 data/
 
+# Ignore runs directory
+/models/detection/runs
+
+# yolo pt files
+*.pt
