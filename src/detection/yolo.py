@@ -43,7 +43,3 @@ def train_model():
 
 if __name__ == "__main__":
     train_model()
-    #model = YOLO("/runs/detect/train3/weights/best.pt")
-
-    #results = model("img.png")  # Predict on an image
-    #results[0].show()  # Display results
