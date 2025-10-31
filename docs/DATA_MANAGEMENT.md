@@ -6,6 +6,28 @@ The goal of our data is to train our models the most efficiently possible.
 
 ## Where we get our data from
 
+Link: https://www.kaggle.com/datasets/fareselmenshawii/large-license-plate-dataset/data
+
+Download : 
+```python
+import kagglehub
+
+path = kagglehub.dataset_download("fareselmenshawii/large-license-plate-dataset")
+
+print("Path to dataset files:", path)
+```
+Puis copier les dossiers images et labels dans le répertoire /data/raw/
+
+Vous devez avoir cette architecture :
+```
++ data
+|    |
+|    + raw
+|    |    + images
+|    |    + labels
+```
+
+
 ## What we do with data
 
 Modify the data to have more artifacts on them. This point has to be studied as some factors (such as adding noise) might not be relevant when training our dataset.
