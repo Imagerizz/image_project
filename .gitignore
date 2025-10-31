@@ -12,7 +12,7 @@ venv/
 data/
 
 # Ignore runs directory
-/models/detection/runs
+/models/detection/runs/
 
 # yolo pt files
 *.pt
