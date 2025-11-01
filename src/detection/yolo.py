@@ -4,7 +4,7 @@ from pathlib import Path
 __CONFIG_PATH = str(Path(__file__).parent.parent.parent / "models" / "detection" / "configYolo.yaml")
 
 
-def train_model():
+def train_model() -> str:
     # check if the configYolo.yml file exists
     print(f"Chemin du YAML : {__CONFIG_PATH}")
     assert Path(__CONFIG_PATH).exists(), f"Fichier introuvable : {__CONFIG_PATH}"
@@ -43,3 +43,10 @@ def train_model():
     # Export the model to ONNX format for deployment
     path = model.export(format="onnx")  # Returns the path to the exported model
     print(path)
+    return path
+
+
+def run_model(path: str, image_path: str) -> None:
+    model = YOLO(path)
+    results = model(image_path, device='cpu')
+    results[0].show()
