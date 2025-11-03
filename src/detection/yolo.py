@@ -15,18 +15,18 @@ def train_model() -> str:
     # Train the model on the dataset for 100 epochs
     train_results = model.train(
         data=__CONFIG_PATH,  # Path to dataset configuration file
-        epochs=1,  # Number of training epochs
+        epochs=50,  # Number of training epochs
         imgsz=800,  # Image size for training
-        batch=8,  # Batch size
+        batch=32,  # Batch size
         device='0',  # Device to run on (e.g., 'cpu', 0, [0,1,2,3])
-        degrees=30,  # rotation
+        degrees=15,  # rotation
         translate=0.2,  # translation
         scale=0.5,  # zoom in/out
-        shear=2.0,  # cisaillement
+        shear=0.5,  # cisaillement
         flipud=0.2,  # flip vertical
         fliplr=0.7,  # flip horizontal
         save_period=10,  # save every 10 periods
-        workers=8,  # To limit multiprocessing windows
+        workers=4,  # To limit multiprocessing windows
     )
 
     print(f"Train result : {train_results}")
