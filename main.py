@@ -6,7 +6,7 @@ from tkinter import filedialog
 from typing import Optional
 
 
-def download_dataset():
+def download_and_copy_dataset():
     print('Start downloading dataset...')
     download_dataset()
     print('Copying dataset...')
@@ -39,7 +39,7 @@ def choose_image() -> str | None:
 
 
 if __name__ == '__main__':
-    download_dataset()
+    download_and_copy_dataset()
     
     model_path = Path(__file__).parent.resolve().joinpath(Path('runs/detect/train21/weights/best.pt'))
     choice = input("Do you want to train the model? (y/n)")
