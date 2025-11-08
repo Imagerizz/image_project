@@ -1,0 +1,10 @@
+# license_plate.yaml
+path: data/raw/fareselmenshawii/large-license-plate-dataset/versions/1
+train: images/train
+val: images/val
+test:  images/test
+
+# Number of classes (1 for the licence plates)
+nc: 1
+# Name of the classes
+names: ['license_plate']
