@@ -1,5 +1,7 @@
 from ultralytics import YOLO
 from pathlib import Path
+import easyocr
+import cv2
 
 __CONFIG_PATH = str(Path(__file__).parent.parent.parent / "models" / "detection" / "configYolo.yaml")
 
@@ -48,5 +50,20 @@ def train_model() -> str:
 
 def run_model(path: str, image_path: str) -> None:
     model = YOLO(path)
-    results = model(image_path, device='0')
-    results[0].show()
+    results = model(image_path)
+
+    img = cv2.imread(image_path)
+    reader = easyocr.Reader(['fr', 'en'])
+
+    for result in results:
+        boxes = result.boxes
+        for box in boxes:
+            x1, y1, x2, y2 = map(int, box.xyxy[0])
+
+            plate_img = img[y1:y2, x1:x2]
+
+            text = reader.readtext(plate_img, detail=0)
+            if text:
+                print("Plaque détectée:", text[0])
+            else:
+                print("Aucune plaque détectée dans cette région")
