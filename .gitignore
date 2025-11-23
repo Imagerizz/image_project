@@ -15,4 +15,4 @@ data/
 /models/detection/runs/
 
 # yolo pt files
-*.pt
+#*.pt
